@@ -50,6 +50,7 @@ public class BM_CBJ extends Algorithm {
 		if (consistent) {
 			// i-1 because when the loop exits it increments i again, giving it
 			// an out of bounds value
+			Problem.assignmentCounter++;
 			currentVar.currentValue = i - 1;
 			return index + 1;
 		} else {

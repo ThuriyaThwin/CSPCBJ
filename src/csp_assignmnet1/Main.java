@@ -1,29 +1,24 @@
 package csp_assignmnet1;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main {
-	private static final String usage = "usage: #variables #values #probability_for_a_constraint #probability_for_a_conflict";
-	private static final String path = System.getProperty("user.dir")
-			+ "/problems/";
-	private static final String problem = ".problem";
+	private static final String	usage		= "usage: #variables #values #probability_for_a_constraint #probability_for_a_conflict";
+	private static final String	path		= System.getProperty("user.dir") + "/problems/";
+	private static final String	problem	= ".problem";
 
 	public static void main(String[] args) throws IOException {
-		if (args.length != 4) {
-			System.out.println(usage);
-			System.exit(1);
 
-		}
-		int n = Integer.parseInt(args[0]);
-		int d = Integer.parseInt(args[1]);
-		double p1 = Double.parseDouble(args[2]);
-		double p2 = Double.parseDouble(args[3]);
-
-		for (int i = 0; i < 1; i++) {
+		/* TODO Check where in ac4 there are more CCs ?@?!?!$?!@$!@ */
+		File mySolutions = new File(System.getProperty("user.dir") + "/mySolution.txt");
+		mySolutions.delete();
+		for (int i = 0; i < 1000; i++) {
 			String fileName = path + i + problem;
 			Problem newProblem = new Problem(fileName);
-			FC fcSolver = new FC(newProblem.variables.length);
-			fcSolver.solve(newProblem);
+			// newProblem.printVar();
+			BM_CBJ newMAC = new BM_CBJ(newProblem.variables.length, newProblem.variables[0].domain.length);
+			newMAC.solve(newProblem);
 		}
 
 	}

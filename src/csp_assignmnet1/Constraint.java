@@ -53,6 +53,13 @@ public class Constraint {
 		}
 	}
 
+	/**
+	 * 
+	 * @param value1
+	 * @param value2
+	 * @return true if there is NO conflict between the 2 values, false if there
+	 *         is a conflict between the 2 values
+	 */
 	public boolean check(int value1, int value2) {
 
 		return (constraintDomain[value1][value2] == Problem.CONSONANT);

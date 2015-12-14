@@ -55,4 +55,14 @@ public class Variable {
 		return (this.numberOfValues == 0);
 	}
 
+	public void printCurrentDomain() {
+		System.out.print("[ ");
+		for (int i = 0; i < this.domain.length; i++) {
+			if (this.domain[i] == Problem.CONSONANT)
+				System.out.print(i + ",");
+		}
+		System.out.println("]");
+
+	}
+
 }

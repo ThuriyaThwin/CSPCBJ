@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Stack;
 
 public class FC extends Algorithm {
+
 	protected ArrayList<Stack<HashSet<Integer>>> reductions;
+
 	protected ArrayList<Stack<Integer>> futureFC;
 	protected ArrayList<Stack<Integer>> pastFC;
 
@@ -46,6 +48,7 @@ public class FC extends Algorithm {
 		if (consistent) {
 			// i-1 because when the loop exits it increments i again, giving it
 			// an out of bounds value
+			Problem.assignmentCounter++;
 			currentVar.currentValue = i - 1;
 			return index + 1;
 		} else {
@@ -112,9 +115,12 @@ public class FC extends Algorithm {
 					newReduction.add(j);
 			}
 		}// end for
+
+		// remove the conflicting value in var2
 		if (newReduction.size() != 0) {
 			for (int value : newReduction)
 				var2.removeValue(value);
+
 			this.reductions.get(var2Index).push(newReduction);
 			this.futureFC.get(var1Index).add(var2Index);
 			this.pastFC.get(var2Index).add(var1Index);
